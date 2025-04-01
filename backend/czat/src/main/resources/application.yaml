@@ -24,6 +24,8 @@ spring:
       max-age: 3600
 
   security:
+    filter:
+          dispatcher-types: async, request, error
     oauth2:
       resourceserver:
         jwt:
