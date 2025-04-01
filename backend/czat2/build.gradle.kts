@@ -15,8 +15,8 @@ group = "example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-bootRun {
-    systemProperties System.properties
+tasks.withType<JavaExec> {
+    environment(System.getenv())
 }
 
 repositories {
