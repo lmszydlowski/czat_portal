@@ -33,9 +33,9 @@ spring:
           jwk-set-uri: ${JWT_JWKS_URI:https://auth.sexnow.pl/.well-known/jwks.json}
 
   r2dbc:
-    url: r2dbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:sexnow}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: r2dbc:postgresql://${DB_HOST:um65462-001.eu.clouddb.ovh.net}:${DB_PORT:35791}/${DB_NAME:sexnow}
+    username: ${DB_USER:sexnow}
+    password: ${DB_PASSWORD:KluczWiolinowy2024}
     pool:
       initial-size: 5
       max-size: 20
