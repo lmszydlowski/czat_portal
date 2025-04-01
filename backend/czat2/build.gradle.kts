@@ -67,7 +67,7 @@ dependencies {
     
     // Database support for chat history
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-    implementation("io.r2dbc:r2dbc-postgresql")
+    implementation("org.postgresql:r2dbc-postgresql")
     
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
