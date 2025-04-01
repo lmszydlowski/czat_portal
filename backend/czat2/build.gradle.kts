@@ -1,4 +1,4 @@
-plugins {
+vplugins {
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.8.21"
@@ -16,7 +16,7 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 tasks.withType<JavaExec> {
-    systemProperties(System.getProperties().toMap() as Map<String, Any>)
+    systemProperties(System.getenv().toMap() as Map<String, Any>)
 }
 
 repositories {
