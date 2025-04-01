@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SexNow - Randki dla dorosłych</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="icon" href="/assets/icons/favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #333;
+        }
+        
+        header {
+            background-color: #cc0000;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 1rem;
+        }
+        
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+        }
+        
+        .hero {
+            background-color: #000000;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background-color: #cc0000;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem 1rem;
+        }
+        
+        .feature {
+            flex-basis: 30%;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            color: #cc0000;
+        }
+        
+        .testimonials {
+            background-color: #000000;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .profiles {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .profile-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .profile-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            padding: 1rem;
+        }
+        
+        .profile-info h3 {
+            margin-top: 0;
+            color: #ff0000;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: black;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input, form textarea, form select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        form button {
+            background-color: #ff0000;
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SexNow</div>
+        <nav>
+            <ul>
+                <li><a href="#" id="home-link">Główna</a></li>
+                <li><a href="#" id="search-link">Szukaj</a></li>
+                <li><a href="#" id="messages-link">Wiadomości</a></li>
+                <li><a href="#" id="profile-link">Mój Profil</a></li>
+                <li><a href="#" id="login-link">Logowanie</a></li>
+                <li><a href="#" id="register-link">Rejestracja</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>Randki dla dorosłych SexNow to świetny wybór!</h1>
+            <p>Tysiące napalonych użytkowników w każdym mieście Polski! Gwarancja bezpiecznej i dyskretnej seks randki!</p>
+            <button class="cta-button" id="register-cta">Zarejestruj się za darmo!</button>
+        </section>
+        
+        <section class="features">
+            <div class="feature">
+                <h3>Darmowa rejestracja</h3>
+                <p>Portal randkowy SexNow oferuje całkowicie darmową rejestrację! Zacznij przygodę już dziś.</p>
+            </div>
+            <div class="feature">
+                <h3>Tysiące użytkowników</h3>
+                <p>Tysiące napalonych użytkowników w każdym mieście Polski czeka na Ciebie!</p>
+            </div>
+            <div class="feature">
+                <h3>Bezpieczeństwo i dyskrecja</h3>
+                <p>Gwarancja bezpiecznej i dyskretnej seks randki. Twoje dane są u nas bezpieczne.</p>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2>Co mówią o nas użytkownicy?</h2>
+            <div class="testimonial">
+                <p>"Portal świadczący usługi na najwyższym poziomie, z zachowaniem dyskrecji i bezpieczeństwa użytkowników. Szybka reakcja na zgłoszenia i podejmowanie skutecznej interwencji. Jasne zasady zgodne z regulaminem, duża ilość użytkowników."</p>
+            </div>
+            <div class="testimonial">
+                <p>"Bardzo wiarygodny portal. Jasne zasady opłat bez ukrytych niespodzianek. Dyskretne łączenie kontaktów. Poznałem wiele realnych osób dzięki temu portalowi."</p>
+            </div>
+        </section>
+        
+        <section class="profiles">
+            <h2>Wyróżnione profile</h2>
+            <p>Liczba użytkowników SexNow jest naprawdę duża i nieustannie rośnie. Oto niektórzy z nich:</p>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <img src="/assets/profiles/alicja.jpeg" alt="Profile">
+                    <div class="profile-info">
+                        <h3>Alicja, 28</h3>
+                        <p>Warszawa</p>
+                        <button class="cta-button send-message-btn">Wyślij wiadomość</button>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="/assets/profiles/jagoda.jpeg" alt="Profile">
+                    <div class="profile-info">
+                        <h3>Jagoda, 32</h3>
+                        <p>Kraków</p>
+                        <button class="cta-button send-message-btn">Wyślij wiadomość</button>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="/assets/profiles/karolina.jpeg" alt="Profile">
+                    <div class="profile-info">
+                        <h3>Karolina, 25</h3>
+                        <p>Wrocław</p>
+                        <button class="cta-button send-message-btn">Wyślij wiadomość</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tips">
+            <h2>Jak zwiększyć swoje szanse?</h2>
+            <div class="feature">
+                <h3>Stwórz przyciągający opis</h3>
+                <p>To idealne miejsce, żeby powiedzieć coś o sobie i o tym, co Cię kręci najbardziej! Puste opisy są bardzo często pomijane przez użytkowników.</p>
+            </div>
+            <div class="feature">
+                <h3>Dodaj atrakcyjne zdjęcia</h3>
+                <p>Jesteśmy wzrokowcami, zwłaszcza jeśli chodzi o sprawy seksu. Dzięki odpowiednim zdjęciom możesz przyciągnąć ludzi, którym się naprawdę podobasz.</p>
+            </div>
+            <div class="feature">
+                <h3>Bądź sobą</h3>
+                <p>Na SexNow nie ma znaczenia, co lubisz w łóżku, ile masz wzrostu, ile ważysz, jaka płeć Cię pociąga. Nie oceniamy - dajemy Ci szansę na spotkanie innych osób.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 SexNow - Randki dla dorosłych. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Logowanie</h2>
+            <form id="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Hasło" required>
+                <button type="submit">Zaloguj się</button>
+            </form>
+            <p>Nie masz jeszcze konta? <a href="#" id="switch-to-register">Zarejestruj się</a></p>
+        </div>
+    </div>
+    
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Rejestracja</h2>
+            <form id="register-form">
+                <input type="text" placeholder="Nazwa użytkownika" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Hasło" required>
+                <input type="password" placeholder="Powtórz hasło" required>
+                <select required>
+                    <option value="" disabled selected>Płeć</option>
+                    <option value="male">Mężczyzna</option>
+                    <option value="female">Kobieta</option>
+                    <option value="other">Inna</option>
+                </select>
+                <input type="date" placeholder="Data urodzenia" required>
+                <select required>
+                    <option value="" disabled selected>Szukam</option>
+                    <option value="men">Mężczyzn</option>
+                    <option value="women">Kobiet</option>
+                    <option value="both">Obu płci</option>
+                </select>
+                <textarea placeholder="O mnie (opcjonalnie)"></textarea>
+                <p>Rejestrując się, akceptujesz nasz regulamin i politykę prywatności.</p>
+                <button type="submit">Zarejestruj się</button>
+            </form>
+            <p>Masz już konto? <a href="#" id="switch-to-login">Zaloguj się</a></p>
+        </div>
+    </div>
+    
+    <!-- Message Modal -->
+    <div id="message-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Wyślij wiadomość</h2>
+            <form id="message-form">
+                <input type="text" id="recipient" readonly>
+                <textarea placeholder="Twoja wiadomość" required></textarea>
+                <button type="submit">Wyślij</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Modal functionality
+        const loginModal = document.getElementById("login-modal");
+        const registerModal = document.getElementById("register-modal");
+        const messageModal = document.getElementById("message-modal");
+        const loginLink = document.getElementById("login-link");
+        const registerLink = document.getElementById("register-link");
+        const registerCta = document.getElementById("register-cta");
+        const switchToRegister = document.getElementById("switch-to-register");
+        const switchToLogin = document.getElementById("switch-to-login");
+        const sendMessageBtns = document.querySelectorAll(".send-message-btn");
+        const closeBtns = document.querySelectorAll(".close");
+        
+        // Open login modal
+        loginLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            loginModal.style.display = "block";
+        });
+        
+        // Open register modal
+        registerLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            registerModal.style.display = "block";
+        });
+        
+        registerCta.addEventListener("click", function() {
+            registerModal.style.display = "block";
+        });
+        
+        // Switch between modals
+        switchToRegister.addEventListener("click", function(e) {
+            e.preventDefault();
+            loginModal.style.display = "none";
+            registerModal.style.display = "block";
+        });
+        
+        switchToLogin.addEventListener("click", function(e) {
+            e.preventDefault();
+            registerModal.style.display = "none";
+            loginModal.style.display = "block";
+        });
+        
+        // Send message buttons
+        sendMessageBtns.forEach(btn => {
+            btn.addEventListener("click", function() {
+                const profileName = this.parentElement.querySelector("h3").textContent;
+                document.getElementById("recipient").value = profileName;
+                messageModal.style.display = "block";
+            });
+        });
+        
+        // Close modals
+        closeBtns.forEach(btn => {
+            btn.addEventListener("click", function() {
+                loginModal.style.display = "none";
+                registerModal.style.display = "none";
+                messageModal.style.display = "none";
+            });
+        });
+        
+        window.addEventListener("click", function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+            if (event.target == registerModal) {
+                registerModal.style.display = "none";
+            }
+            if (event.target == messageModal) {
+                messageModal.style.display = "none";
+            }
+        });
+        
+        // Form submissions
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            // In a real implementation, this would call the authService.js to handle login
+            alert("Funkcja logowania będzie dostępna wkrótce!");
+        });
+        
+        document.getElementById("register-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            // In a real implementation, this would call the authService.js to handle registration
+            alert("Funkcja rejestracji będzie dostępna wkrótce!");
+        });
+        
+        document.getElementById("message-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            // In a real implementation, this would call the chatService.js to send a message
+            alert("Funkcja wysyłania wiadomości będzie dostępna wkrótce!");
+            messageModal.style.display = "none";
+        });
+    </script>
+</body>
+</html>
+

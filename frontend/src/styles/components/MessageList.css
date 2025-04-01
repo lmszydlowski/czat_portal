@@ -1,0 +1,44 @@
+.message-list-container {
+  padding: 20px;
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+.message {
+  margin: 10px 0;
+  max-width: 70%;
+}
+
+.message.sent {
+  margin-left: auto;
+}
+
+.message.received {
+  margin-right: auto;
+}
+
+.message-content {
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: #f0f0f0;
+}
+
+.message.sent .message-content {
+  background-color: #007bff;
+  color: white;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.8em;
+}
+
+.message-time {
+  color: #666;
+}
+
+.message.sent .message-time {
+  color: #e0e0e0;
+}

@@ -1,0 +1,33 @@
+.chat-container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: calc(100vh - 60px);
+  background-color: white;
+}
+
+.message-list {
+  padding: var(--spacing-medium);
+  overflow-y: auto;
+}
+
+.message-input-container {
+  padding: var(--spacing-medium);
+  border-top: 1px solid var(--secondary-color);
+}
+
+.message {
+  margin-bottom: var(--spacing-small);
+  padding: var(--spacing-small);
+  border-radius: 8px;
+}
+
+.message-sent {
+  background-color: var(--primary-color);
+  color: white;
+  margin-left: auto;
+}
+
+.message-received {
+  background-color: var(--secondary-color);
+  color: white;
+}
