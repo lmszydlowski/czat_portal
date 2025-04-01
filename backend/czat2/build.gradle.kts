@@ -16,7 +16,7 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 tasks.withType<JavaExec> {
-    environment(System.getenv())
+    systemProperties(System.getProperties().toMap() as Map<String, Any>)
 }
 
 repositories {
