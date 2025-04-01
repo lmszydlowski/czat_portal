@@ -1,0 +1,9 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+
+  security:
+        filter:
+          dispatcher-types: async, request, error
+
