@@ -31,7 +31,9 @@ class ChatHomeBaseService {
     }
     
     fun sendPostback(klikId: String, wartosc: Double, leadId: String, waluta: String, noweKonto: Boolean) {
-    	val url = "https://api.conversand.com/SIECI/postback.php?id_sieci=67dc17bbb8ad1918e3307938&haslo=sexdatenow&klik_id=$klikId&kwota=$wartosc&lead_id=$leadId&waluta=$waluta&nowe_konto=${if (noweKonto) 1 else 0}"
-    	// Implementacja wysyłania żądania HTTP do podanego URL
+        val url = "https://api.conversand.com/SIECI/postback.php?id_sieci=67dc17bbb8ad1918e3307938&haslo=sexdatenow&klik_id=$klikId&kwota=$wartosc&lead_id=$leadId&waluta=$waluta&nowe_konto=${if (noweKonto) 1 else 0}"
+        // TODO: Implement HTTP request to the URL
+        // For now, mark as intentionally unused with a comment
+        // or use it in a logger: logger.debug("Sending postback to URL: $url")
     }
 }

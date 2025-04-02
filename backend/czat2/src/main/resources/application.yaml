@@ -4,8 +4,8 @@ spring:
   webflux:
     cors:
       allowed-origins: 
-        - https://sexnow.pl
-        - https://www.sexnow.pl
+        - https://seksnow.pl
+        - https://www.seksnow.pl
         - http://localhost:3000
       allowed-methods: 
         - GET
@@ -29,8 +29,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${JWT_ISSUER_URI:https://auth.sexnow.pl}
-          jwk-set-uri: ${JWT_JWKS_URI:https://auth.sexnow.pl/.well-known/jwks.json}
+          issuer-uri: ${JWT_ISSUER_URI:https://auth.seksnow.pl}
+          jwk-set-uri: ${JWT_JWKS_URI:https://auth.seksnow.pl/.well-known/jwks.json}
 
   r2dbc:
     url: r2dbc:postgresql://${DB_HOST:um65462-001.eu.clouddb.ovh.net}:${DB_PORT:35791}/${DB_NAME:sexnow}

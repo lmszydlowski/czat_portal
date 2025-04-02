@@ -1,7 +1,12 @@
+kotlin {
+    jvmToolchain(17) // This will set both Java and Kotlin to use JVM 17
+}
+
 plugins {
+    application
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.20"
     kotlin("plugin.spring") version "1.8.21"
 }
 
@@ -17,6 +22,18 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 tasks.withType<JavaExec> {
     systemProperties(System.getenv().toMap() as Map<String, Any>)
+
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17" // Match this with your Java target
+    }
+}
+
+tasks.withType<JavaCompile> {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
 }
 
 repositories {
@@ -86,4 +103,7 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+application {
+    mainClass = "example.chat.ReactiveChatApplicationKt" // Replace with your actual main class
 }
