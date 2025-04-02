@@ -20,6 +20,8 @@ export const useChatHomeBase = () => {
   const sendMessage = (content) => {
     chatHomeBaseService.sendMessage(content);
   };
+  const connectToChat = () => {
+    const socket = new WebSocket('wss://seksnow.pl/ws');
 
   return { messages, sendMessage, userStatus };
 };

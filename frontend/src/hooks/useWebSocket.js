@@ -6,11 +6,12 @@ import SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 import { config } from '../config';
 
-export var  useWebSocket = () => {
+export var useWebSocket = () => {
   const [stompClient, setStompClient] = useState(null);
   const [lastMessage, setLastMessage] = useState(null);
 
   useEffect(() => {
+    // Use secure WebSocket URL
     const socket = new SockJS(config.wsUrl);
     const client = Stomp.over(socket);
 
@@ -64,11 +65,12 @@ const Register = () => {
   );
 };
 
- useWebSocket = () => {
+useWebSocket = () => {
   const [lastMessage, setLastMessage] = useState(null);
   const wsRef = useRef(null);
 
   useEffect(() => {
+    // Use secure WebSocket URL from config
     wsRef.current = new WebSocket(WS_URL);
 
     wsRef.current.onmessage = (event) => {

@@ -1,6 +1,7 @@
 export const connectWebSocket = () => {
-  const ws = new WebSocket(process.env.REACT_APP_WS_URL);
-  
+  // Update to use secure WebSocket with seksnow.pl domain
+  const ws = new WebSocket('wss://seksnow.pl/ws');
+
   ws.onopen = () => {
     console.log('WebSocket connected');
   };
@@ -16,3 +17,4 @@ export const connectWebSocket = () => {
 
   return ws;
 };
+

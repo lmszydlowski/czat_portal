@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserData = async () => {
     try {
+      // This will use the updated api service with HTTPS
       const userData = await api.get('/user/profile');
       setCurrentUser(userData);
       setIsAdmin(userData.role === 'ADMIN');

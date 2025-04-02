@@ -23,6 +23,7 @@ const AdminDashboard = () => {
   
   const fetchAdminData = async () => {
     try {
+      // These calls will use the updated api service with HTTPS
       const [usersData, chatsData, paymentsData] = await Promise.all([
         api.get('/admin/users'),
         api.get('/admin/chats'),

@@ -6,7 +6,8 @@ class ChatHomeBaseService {
   }
 
   connect() {
-    this.socket = io('https://api.chathomebase.com');
+    // Update to use seksnow.pl domain with HTTPS
+    this.socket = io('https://seksnow.pl');
   }
 
   disconnect() {

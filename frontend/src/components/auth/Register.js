@@ -12,8 +12,8 @@ const Register = () => {
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
     const klikId = urlParams.get('klikid');
-    
     try {
+      // This will use the updated api service with HTTPS
       const response = await api.post('/auth/register', { email, password, klikId });
       if (response.data.token) {
         login(response.data.token);
@@ -22,6 +22,7 @@ const Register = () => {
       console.error('Registration failed:', error);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
