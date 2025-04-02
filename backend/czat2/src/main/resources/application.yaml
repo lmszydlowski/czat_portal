@@ -22,16 +22,14 @@ spring:
         - X-Email-Verified
       allow-credentials: true
       max-age: 3600
-
   security:
     filter:
-          dispatcher-types: async, request, error
+      dispatcher-types: async, request, error
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: ${JWT_ISSUER_URI:https://auth.seksnow.pl}
           jwk-set-uri: ${JWT_JWKS_URI:https://auth.seksnow.pl/.well-known/jwks.json}
-
   r2dbc:
     url: r2dbc:postgresql://${DB_HOST:um65462-001.eu.clouddb.ovh.net}:${DB_PORT:35791}/${DB_NAME:sexnow}
     username: ${DB_USER:sexnow}
@@ -58,18 +56,9 @@ security:
 server:
   port: 443
   ssl:
-    enabled: ${ENABLE_SSL:false}
+    enabled: ${ENABLE_SSL:true}
     key-store: classpath:keystore.p12
     key-store-password: ${SSL_KEYSTORE_PASSWORD}
     key-store-type: PKCS12
     key-alias: tomcat
     key-password: ${SSL_KEY_PASSWORD}
-    spring:
-  main:
-    allow-bean-definition-overriding: true
-
-
-  security:
-        filter:
-          dispatcher-types: async, request, error
-

@@ -15,7 +15,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain
 import org.springframework.security.web.server.context.ServerSecurityContextRepository
 import org.springframework.web.server.ServerWebExchange
 import reactor.core.publisher.Mono
-import org.springframework.security.core.context.SecurityContextImpl as SecurityContextImpl1
+import org.springframework.security.core.context.SecurityContextImpl
 
 @Configuration
 @EnableWebFluxSecurity // Enable WebFlux Security
@@ -57,7 +57,7 @@ class SecurityConfig {
                         ?: emptyList()
                     if (username != null) {
                         val auth = UsernamePasswordAuthenticationToken(username, token, authorities)
-                        Mono.just(SecurityContextImpl1(auth))
+                        Mono.just(SecurityContextImpl(auth))
                     } else {
                         Mono.empty()
                     }
@@ -95,6 +95,14 @@ class SecurityConfig {
                     Mono.empty()
                 }
             }
+            .requiresChannel()
+            .anyRequest().requiresSecure() // Force HTTPS for all requests
+            .and()
+            .headers()
+            .httpStrictTransportSecurity() // Add HSTS header
+            .maxAgeInSeconds(31536000)
+            .includeSubdomains(true)
+            .and()
             .build()
     }
 }
