@@ -1,5 +1,5 @@
 kotlin {
-    jvmToolchain(17) // This will set both Java and Kotlin to use JVM 17
+    jvmToolchain(21) // This will set both Java and Kotlin to use JVM 21
 }
 
 plugins {
@@ -18,7 +18,7 @@ dependencyManagement {
 
 group = "example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 tasks.withType<JavaExec> {
     systemProperties(System.getenv().toMap() as Map<String, Any>)
@@ -27,13 +27,13 @@ tasks.withType<JavaExec> {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "17" // Match this with your Java target
+        jvmTarget = "21" // Match this with your Java target
     }
 }
 
 tasks.withType<JavaCompile> {
-    sourceCompatibility = JavaVersion.VERSION_17.toString()
-    targetCompatibility = JavaVersion.VERSION_17.toString()
+    sourceCompatibility = JavaVersion.VERSION_21.toString()
+    targetCompatibility = JavaVersion.VERSION_21.toString()
 }
 
 repositories {
@@ -103,7 +103,7 @@ dependencies {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
         freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }

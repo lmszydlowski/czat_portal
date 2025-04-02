@@ -1,4 +1,12 @@
 // ✅ Single securityWebFilterChain with proper configuration
+// ✅ Single securityWebFilterChain with proper configuration
+import org.springframework.context.annotation.Bean
+import org.springframework.security.web.server.context.ServerSecurityContextRepository
+import org.springframework.http.HttpStatus
+import org.springframework.security.config.web.server.ServerHttpSecurity
+import java.time.Duration
+import org.springframework.security.web.server.SecurityWebFilterChain
+import reactor.core.publisher.Mono
 @Bean
 fun securityWebFilterChain(
     http: ServerHttpSecurity,
@@ -23,8 +31,8 @@ fun securityWebFilterChain(
             }
         }
         .headers {
-            it.httpStrictTransportSecurity { hsts ->
-                hsts.maxAgeInSeconds(31536000)
+            it.hsts { hsts ->
+                hsts.maxAge(Duration.ofSeconds(31536000))
                     .includeSubdomains(true)
             }
         }
