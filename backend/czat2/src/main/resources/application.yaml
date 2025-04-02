@@ -57,13 +57,13 @@ security:
 
 server:
   port: 8080
-  #ssl:
-    #enabled: ${ENABLE_SSL:false}
-    #key-store: classpath:keystore.p12
-    #key-store-password: ${SSL_KEYSTORE_PASSWORD}
-    #key-store-type: PKCS12
-    #key-alias: tomcat
-    #key-password: ${SSL_KEY_PASSWORD}spring:
+  ssl:
+    enabled: ${ENABLE_SSL:false}
+    key-store: classpath:keystore.p12
+    key-store-password: ${SSL_KEYSTORE_PASSWORD}
+    key-store-type: PKCS12
+    key-alias: tomcat
+    key-password: ${SSL_KEY_PASSWORD}spring:
   main:
     allow-bean-definition-overriding: true
 
