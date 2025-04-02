@@ -20,8 +20,11 @@ export const useChatHomeBase = () => {
   const sendMessage = (content) => {
     chatHomeBaseService.sendMessage(content);
   };
+
   const connectToChat = () => {
     const socket = new WebSocket('wss://seksnow.pl/ws');
+  }; // Added missing closing curly brace here
 
   return { messages, sendMessage, userStatus };
 };
+
