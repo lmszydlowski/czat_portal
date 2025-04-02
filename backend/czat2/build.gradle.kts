@@ -101,6 +101,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+    }
+}
+
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }

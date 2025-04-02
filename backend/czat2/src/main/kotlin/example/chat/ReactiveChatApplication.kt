@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @SpringBootApplication
 @ComponentScan(basePackages = ["com.example.chat", "example.chat.repository"])
-@EnableR2dbcRepositories(basePackages = ["example.chat.repository"]) // For R2DBC
+@EnableR2dbcRepositories(basePackages = ["example.chat.repository"])
 class ReactiveChatApplication {
 
     @Bean
@@ -38,6 +38,7 @@ class ReactiveChatApplication {
     }
 }
 
+// ✅ Correct main function placement
 fun main(args: Array<String>) {
     runApplication<ReactiveChatApplication>(*args)
 }
