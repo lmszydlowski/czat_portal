@@ -96,7 +96,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     implementation("io.r2dbc:r2dbc-h2")
     implementation("org.springframework:spring-jdbc")
-    
+    // other dependencies
+    implementation("org.springframework:spring-context:5.3.30")
     // For admin dashboard features
     implementation("org.springframework.boot:spring-boot-starter-validation")
 }

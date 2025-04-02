@@ -1,7 +1,8 @@
 // ✅ Single securityWebFilterChain with proper configuration
 // ✅ Single securityWebFilterChain with proper configuration
-import org.springframework.context.annotation.Bean
+// Removed conflicting import
 import org.springframework.security.web.server.context.ServerSecurityContextRepository
+import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpStatus
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import java.time.Duration
