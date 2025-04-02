@@ -6,7 +6,7 @@ spring:
       allowed-origins: 
         - https://seksnow.pl
         - https://www.seksnow.pl
-        - https://localhost:3000
+        - http://localhost:3000
       allowed-methods: 
         - GET
         - POST
