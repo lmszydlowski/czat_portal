@@ -56,7 +56,7 @@ security:
 server:
   port: 443
   ssl:
-    enabled: false
+    enabled: true
     key-store: classpath:keystore.p12
     key-store-password: KluczMechaniczny2024!
     key-store-type: PKCS12
