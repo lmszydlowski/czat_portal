@@ -41,6 +41,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-websocket:3.4.4")
     implementation("org.webjars:stomp-websocket:2.3.4")
     implementation("org.springframework:spring-messaging:6.0.11")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     // jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
@@ -60,6 +62,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-websocket")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
     // Chat Home Base dependencies
     implementation("com.tfowl.socketio:socket-io-coroutines:1.0.1")
     implementation("io.dyte:socketio-jvm:1.0.0")
@@ -78,6 +81,16 @@ dependencies {
     implementation("io.r2dbc:r2dbc-h2")
     implementation("org.springframework:spring-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+        // other dependencies
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
 tasks.withType<Test> {

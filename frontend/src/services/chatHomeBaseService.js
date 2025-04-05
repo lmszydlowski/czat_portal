@@ -15,7 +15,15 @@ class ChatHomeBaseService {
       this.socket.disconnect();
     }
   }
+// Add to chatHomeBaseService.js class
+onModalEvent(callback) {
+  this.socket.on('modal_event', callback);
+}
 
+// Add method to trigger chat-related modals
+triggerChatModal(userId) {
+  this.socket.emit('open_chat', { userId });
+}
   onMessage(callback) {
     this.socket.on('message', callback);
   }

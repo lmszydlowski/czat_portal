@@ -2,9 +2,14 @@
 // ✅ Single securityWebFilterChain with proper configuration
 // Removed conflicting import
 import org.springframework.security.web.server.context.ServerSecurityContextRepository
+import org.springframework.web.server.ServerWebExchange
 import org.springframework.context.annotation.Bean
+import org.springframework.stereotype.Component
 import org.springframework.http.HttpStatus
 import org.springframework.security.config.web.server.ServerHttpSecurity
+import org.springframework.security.config.web.server.AuthorizeExchangeSpec
+import org.springframework.web.server.ServerWebExchange
+import org.springframework.security.core.AuthenticationException
 import java.time.Duration
 import org.springframework.security.web.server.SecurityWebFilterChain
 import reactor.core.publisher.Mono
@@ -18,21 +23,21 @@ fun securityWebFilterChain(
         .httpBasic { it.disable() }
         .formLogin { it.disable() }
         .securityContextRepository(securityContextRepository)
-        .authorizeExchange { exchange ->
+        .authorizeExchange { exchange: AuthorizeExchangeSpec ->
             exchange
                 .pathMatchers("/auth/login", "/auth/register").permitAll()
                 .pathMatchers("/admin/**").hasRole("ADMIN")
                 .pathMatchers("/chat/**").authenticated()
                 .anyExchange().authenticated()
         }
-        .exceptionHandling { exceptions ->
-            exceptions.authenticationEntryPoint { exchange, _ ->
-                exchange.response.statusCode = HttpStatus.UNAUTHORIZED
+        .exceptionHandling { exceptions: ServerHttpSecurity.ExceptionHandlingSpec ->
+            exceptions.authenticationEntryPoint { exchange: ServerWebExchange, _: AuthenticationException ->
+                exchange.response.setStatusCode(HttpStatus.UNAUTHORIZED)
                 Mono.empty()
             }
         }
         .headers {
-            it.hsts { hsts ->
+            it.hsts { hsts: ServerHttpSecurity.HeaderSpec.HstsSpec ->
                 hsts.maxAge(Duration.ofSeconds(31536000))
                     .includeSubdomains(true)
             }

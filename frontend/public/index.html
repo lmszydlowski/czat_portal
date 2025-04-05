@@ -468,6 +468,24 @@
             messageModal.style.display = "none";
         });
     </script>
+    <script>
+        const API_ENDPOINT = 'https://www.seksnow.pl/api';
+        // Update all API calls to use this endpoint
+    </script>
+    
+    <script>
+        document.querySelector('.send-button').addEventListener('click', async () => {
+            const message = document.querySelector('.message-input').value;
+            await fetch('https://seksnow.pl/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${userToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: message })
+            });
+        });
+        </script>
 </body>
 </html>
 

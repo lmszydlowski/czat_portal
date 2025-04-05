@@ -63,5 +63,20 @@ export const authService = {
       localStorage.removeItem('token');
       throw new Error('Session expired. Please log in again');
     }
+  },
+
+  triggerModal: (modalType, data) => {
+    const modalEvent = new CustomEvent('modal_event', { 
+      detail: { modalType, data } 
+    });
+    window.dispatchEvent(modalEvent);
+  },
+
+  showLoginModal: () => {
+    authService.triggerModal('login', {});
+  },
+
+  showRegisterModal: () => {
+    authService.triggerModal('register', {});
   }
 };

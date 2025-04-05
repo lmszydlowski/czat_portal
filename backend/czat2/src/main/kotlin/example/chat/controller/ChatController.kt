@@ -44,7 +44,7 @@ class ChatController {
 
 // REST Controller for chat API (SSE and POST)
 @RestController
-@RequestMapping("/chat")
+@RequestMapping("/api/chat")
 class ChatApiController(
     private val chatHistoryRepository: ChatHistoryRepository // Only this dependency
 ) {
@@ -61,6 +61,10 @@ class ChatApiController(
 
     // Endpoint for posting messages
     @PostMapping
+    fun sendMessage(@RequestBody message: ChatMessage): ResponseEntity<ChatMessage> {
+        val savedMessage = chatHistoryRepository.save(message)
+        return ResponseEntity.ok(savedMessage)
+    }
     fun postMessage(
         @RequestBody message: ChatMessage,
         @AuthenticationPrincipal userId: Long
@@ -69,7 +73,7 @@ class ChatApiController(
 
         val chatHistory = ChatHistory(
             userId = userId,
-            messageId = messageWithId.id ?: error("Message ID cannot be null"),
+            messageId = messageWithId.id ?: throw IllegalArgumentException("Message ID cannot be null"),
             content = messageWithId.content,
             timestamp = LocalDateTime.now(),
             isFromUser = true

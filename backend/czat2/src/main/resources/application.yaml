@@ -52,6 +52,9 @@ security:
         - sexnow.pl
         - gmail.com
         - wp.pl
+        - o2.pl
+        - onet.pl
+        - interia.pl
 
 server:
   port: 443

@@ -2,9 +2,12 @@ package com.example.chat.util
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.SignatureAlgorithm
 import java.util.Date
 import javax.crypto.spec.SecretKeySpec
+import kotlin.text.Charsets
+import kotlin.jvm.java
 
 object JwtUtil {
     // Przykładowy 512-bitowy klucz zapisany jako 128-znakowy ciąg szesnastkowy.
@@ -12,7 +15,7 @@ object JwtUtil {
     private const val SECRET_KEY = "0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
     private const val EXPIRATION_TIME = 1000 * 60 * 60 * 10L // 10 godzin
 
-    private val key = SecretKeySpec(SECRET_KEY.toByteArray(), SignatureAlgorithm.HS512.jcaName)
+    private val key = SecretKeySpec(SECRET_KEY.toByteArray(Charsets.UTF_8), SignatureAlgorithm.HS512.jcaName)
 
     fun generateToken(username: String): String {
         return Jwts.builder()
@@ -46,5 +49,10 @@ object JwtUtil {
             .build()
             .parseClaimsJws(token)
             .body
+    }
+    fun extractRoles(claims: Claims): List<GrantedAuthority> {
+        return claims.get("roles", String::class.java)
+            .split(",")
+            .map { SimpleGrantedAuthority(it) }
     }
 }

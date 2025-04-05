@@ -5,8 +5,19 @@ import { Login } from './components/auth/Login';
 import { ChatWindow } from './components/chat/ChatWindow';
 import AdminDashboard from './components/admin/AdminDashboard';
 import Register from './components/auth/Register';
+import { modalHandlers } from './services/modal-handlers';
+import Modal from './components/common/Modal';
 
 const App = () => {
+  React.useEffect(() => {
+    // Initialize modal handlers
+    modalHandlers.initialize();
+    
+    return () => {
+      // Clean up event listeners
+      modalHandlers.cleanup();
+    };
+  }, []);
   return (
     <AuthProvider>
       <Router>
@@ -25,4 +36,3 @@ const App = () => {
 };
 
 export default App;
-

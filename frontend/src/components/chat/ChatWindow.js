@@ -20,7 +20,7 @@ export var  ChatWindow = () => {
 ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const { sendMessage, lastMessage } = useWebSocket();
-  const socket = new WebSocket('wss://seksnow.pl/ws');
+  const socket = new WebSocket('wss://www.seksnow.pl/ws');
 
   useEffect(() => {
     if (lastMessage) {
