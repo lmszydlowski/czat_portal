@@ -40,10 +40,10 @@ class ChatController {
         return chatMessage
     }
 
-    @GetMapping("/api/chat/history")
-    fun getChatHistory(): Flux<ChatHistory> {
-        return chatHistoryRepository.findAllByOrderByTimestampDesc()
-    }
+    // @GetMapping("/api/chat/history")
+    // fun getChatHistory(): Flux<ChatHistory> {
+    //     return chatHistoryRepository.findAllByOrderByTimestampDesc()
+    // }
 }
 
 // REST Controller for chat API (SSE and POST)

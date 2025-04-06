@@ -10,12 +10,13 @@ COPY build.gradle.kts settings.gradle.kts ./
 COPY gradle ./gradle
 COPY gradlew ./
 
+RUN chmod a+x gradlew
 # Copy source code
 COPY src ./src
 
 # Build the application in production mode
-RUN chmod a+x gradlew
-RUN ./gradlew bootJar --no-dae
+
+RUN ./gradlew bootJar --no-daemon
 # Stage 2: Create the runtime image
 FROM eclipse-temurin:21-jre-alpine
 
