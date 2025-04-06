@@ -9,12 +9,11 @@ import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import reactor.core.publisher.Flux
+import reactor.core.publisher.*
 import reactor.core.publisher.Mono
 import reactor.core.publisher.Sinks
 import java.time.LocalDateTime
@@ -23,7 +22,6 @@ import java.util.UUID
 // WebSocket Controller for real-time chat
 @Controller
 class ChatController {
-
     @Autowired
     private lateinit var chatHistoryRepository: ChatHistoryRepository
 
@@ -31,14 +29,19 @@ class ChatController {
     @SendTo("/topic/messages")
     fun handleChat(chatMessage: ChatMessage): ChatMessage {
         val chatHistory = ChatHistory(
-            userId = chatMessage.userId ?: 0L, // Assuming ChatMessage has userId, default to 0 if absent
+            userId = chatMessage.userId ?: 0L,
             messageId = chatMessage.id ?: UUID.randomUUID().toString(),
             content = chatMessage.content,
             timestamp = LocalDateTime.now(),
             isFromUser = true
         )
-        this.chatHistoryRepository.save(chatHistory).subscribe() // Save asynchronously
+        chatHistoryRepository.save(chatHistory).subscribe()
         return chatMessage
+    }
+
+    @GetMapping("/api/chat/history")
+    fun getChatHistory(): Flux<ChatHistory> {
+        return chatHistoryRepository.findAllByOrderByTimestampDesc()
     }
 }
 

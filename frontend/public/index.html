@@ -449,23 +449,106 @@
         });
         
         // Form submissions
-        document.getElementById("login-form").addEventListener("submit", function(e) {
+        document.getElementById("login-form").addEventListener("submit", async function(e) {
             e.preventDefault();
-            // In a real implementation, this would call the authService.js to handle login
-            alert("Funkcja logowania będzie dostępna wkrótce!");
+        
+            const email = document.querySelector('#login-form input[type="email"]').value;
+            const password = document.querySelector('#login-form input[type="password"]').value;
+        
+            try {
+            const response = await fetch('/login', { // Assuming your server route is /login
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                email: email,
+                password: password
+                })
+            });
+        
+            const data = await response.json();
+        
+            if (response.ok) {
+                // Store the token in localStorage
+                localStorage.setItem('token', data.token);
+        
+                alert("Zalogowano pomyślnie!");
+                loginModal.style.display = "none";
+                // Redirect or perform other actions upon successful login
+            } else {
+                alert(`Logowanie nie powiodło się: ${data.message || 'Unknown error'}`);
+            }
+            } catch (error) {
+            console.error("Błąd podczas logowania:", error);
+            alert("Wystąpił błąd podczas logowania. Spróbuj ponownie później.");
+            }
         });
         
-        document.getElementById("register-form").addEventListener("submit", function(e) {
+        document.getElementById("register-form").addEventListener("submit", async function(e) {
             e.preventDefault();
-            // In a real implementation, this would call the authService.js to handle registration
-            alert("Funkcja rejestracji będzie dostępna wkrótce!");
+            
+            const username = document.querySelector('#register-form input[type="text"]').value;
+            const email = document.querySelector('#register-form input[type="email"]').value;
+            const password = document.querySelector('#register-form input[type="password"]').value;
+            //const passwordRepeat = document.querySelector('#register-form input[type="password"][placeholder="Powtórz hasło"]').value;
+            const gender = document.querySelector('#register-form select[name="gender"]').value;
+            const birthDate = document.querySelector('#register-form input[type="date"]').value;
+            const seeking = document.querySelector('#register-form select[name="seeking"]').value;
+            const aboutMe = document.querySelector('#register-form textarea').value;
+
+            // Basic validation
+            if (!username || !email || !password ) {
+            alert("Proszę wypełnić wszystkie wymagane pola.");
+            return;
+            }
+        
+            try {
+            const response = await fetch('/register', { // Assuming your server route is /register
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password,
+                gender: gender,
+                birthDate: birthDate,
+                seeking: seeking,
+                aboutMe: aboutMe
+                })
+            });
+        
+            const data = await response.json();
+        
+            if (response.ok) {
+                alert("Rejestracja przebiegła pomyślnie!");
+                registerModal.style.display = "none";
+                // Redirect or perform other actions upon successful registration
+            } else {
+                alert(`Rejestracja nie powiodła się: ${data.message || 'Unknown error'}`);
+            }
+            } catch (error) {
+            console.error("Błąd podczas rejestracji:", error);
+            alert("Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.");
+            }
         });
         
-        document.getElementById("message-form").addEventListener("submit", function(e) {
+        document.getElementById("message-form").addEventListener("submit", async function(e) {
             e.preventDefault();
-            // In a real implementation, this would call the chatService.js to send a message
-            alert("Funkcja wysyłania wiadomości będzie dostępna wkrótce!");
+            const recipientName = document.getElementById("recipient").value;
+            const messageText = document.querySelector('#message-form textarea').value;
+
+            try {
+            // Assuming chatService.sendMessage is an async function in chatService.js
+            await chatService.sendMessage(recipientName, messageText);
+            alert("Wiadomość wysłana!");
             messageModal.style.display = "none";
+            } catch (error) {
+            console.error("Błąd podczas wysyłania wiadomości:", error);
+            alert("Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.");
+            }
         });
     </script>
     <script>
