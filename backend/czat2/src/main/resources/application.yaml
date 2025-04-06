@@ -57,14 +57,14 @@ security:
         - interia.pl
 
 server:
-  port: 443
-  ssl:
-    enabled: true
-    key-store: classpath:keystore.p12
-    key-store-password: KluczMechaniczny2024!
-    key-store-type: PKCS12
-    key-alias: tomcat
-    key-password: KluczMechaniczny2024!
-logging:
-  level:
-    org.springframework.boot.web.embedded.tomcat: DEBUG
+  port: 8080
+  #ssl:
+    #enabled: false
+    #key-store: classpath:keystore.p12
+    #key-store-password: KluczMechaniczny2024!
+    #key-store-type: PKCS12
+    #key-alias: tomcat
+    #key-password: KluczMechaniczny2024!
+#logging:
+  #level:
+    #org.springframework.boot.web.embedded.tomcat: DEBUG
