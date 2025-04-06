@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
 import org.springframework.http.HttpStatus
 import org.springframework.security.config.web.server.ServerHttpSecurity
-import org.springframework.security.config.web.server.AuthorizeExchangeSpec
-import org.springframework.web.server.ServerWebExchange
 import org.springframework.security.core.AuthenticationException
 import java.time.Duration
 import org.springframework.security.web.server.SecurityWebFilterChain
@@ -23,7 +21,7 @@ fun securityWebFilterChain(
         .httpBasic { it.disable() }
         .formLogin { it.disable() }
         .securityContextRepository(securityContextRepository)
-        .authorizeExchange { exchange: AuthorizeExchangeSpec ->
+        .authorizeExchange { exchange ->
             exchange
                 .pathMatchers("/auth/login", "/auth/register").permitAll()
                 .pathMatchers("/admin/**").hasRole("ADMIN")

@@ -4,6 +4,8 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.SignatureAlgorithm
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import java.util.Date
 import javax.crypto.spec.SecretKeySpec
 import kotlin.text.Charsets

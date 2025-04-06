@@ -10,6 +10,7 @@ import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
+// import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -64,10 +65,10 @@ class ChatApiController(
 
     // Endpoint for posting messages
     @PostMapping
-    fun sendMessage(@RequestBody message: ChatMessage): ResponseEntity<ChatMessage> {
-        val savedMessage = chatHistoryRepository.save(message)
-        return ResponseEntity.ok(savedMessage)
-    }
+    // fun sendMessage(@RequestBody message: ChatHistory): ResponseEntity<ChatMessage> {
+    //     val savedMessage = chatHistoryRepository.save(message)
+    //     return ResponseEntity.ok(savedMessage)
+    // }
     fun postMessage(
         @RequestBody message: ChatMessage,
         @AuthenticationPrincipal userId: Long

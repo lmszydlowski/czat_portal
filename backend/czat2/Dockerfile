@@ -1,21 +1,21 @@
 # Stage 1: Build the application
-FROM gradle:8.10-jdk-21 AS build
+FROM gradle:8.10-jdk21 AS build
 
 WORKDIR /app
 
 # Copy gradle configuration files
-COPY czat2/build.gradle.kts czat2/settings.gradle.kts ./
+COPY build.gradle.kts settings.gradle.kts ./
 
 # Copy gradle wrapper
-COPY czat2/gradle ./gradle
-COPY czat2/gradlew ./
+COPY gradle ./gradle
+COPY gradlew ./
 
 # Copy source code
-COPY czat2/src ./src
+COPY src ./src
 
 # Build the application in production mode
-RUN ./gradlew bootJar --no-daemon
-
+RUN chmod a+x gradlew
+RUN ./gradlew bootJar --no-dae
 # Stage 2: Create the runtime image
 FROM eclipse-temurin:21-jre-alpine
 
