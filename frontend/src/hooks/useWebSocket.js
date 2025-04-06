@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { WS_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
@@ -65,33 +65,4 @@ const Register = () => {
   );
 };
 
-useWebSocket = () => {
-  const [lastMessage, setLastMessage] = useState(null);
-  const wsRef = useRef(null);
-
-  useEffect(() => {
-    // Use secure WebSocket URL from config
-    wsRef.current = new WebSocket(WS_URL);
-
-    wsRef.current.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      setLastMessage(message);
-    };
-
-    return () => {
-      if (wsRef.current) {
-        wsRef.current.close();
-      }
-    };
-  }, []);
-
-  const sendMessage = (message) => {
-    if (wsRef.current?.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify(message));
-    }
-  };
-
-  return { sendMessage, lastMessage };
-};
-
-export default Register;
+export default useWebSocket;

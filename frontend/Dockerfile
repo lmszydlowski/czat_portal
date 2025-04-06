@@ -8,10 +8,12 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # Copy the rest of the frontend code
-COPY . ./
+COPY config/ ./config/
+COPY src/ ./src/
+COPY public/ ./public/
 
 # Build the application
 RUN npm run build

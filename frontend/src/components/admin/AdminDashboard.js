@@ -3,6 +3,8 @@ import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { useMediaQuery } from 'react-responsive';
 import '../../styles/components/admin/AdminDashboard.css';
+// import { handleUserBlock, handleMessageDelete } from '../../utils/adminUtils'; // Utility functions for blocking users and deleting messages
+
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -85,8 +87,8 @@ const AdminDashboard = () => {
                     <td>{user.email}</td>
                     <td>{user.status}</td>
                     <td>
-                      <button onClick={() => viewUserChatHistory(user.id)}>View</button>
-                      <button onClick={() => handleUserBlock(user.id)}>Block</button>
+                      {/* <button onClick={() => viewUserChatHistory(user.id)}>View</button> */}
+                      {/* <button onClick={() => handleUserBlock(user.id)}>Block</button> */}
                     </td>
                   </tr>
                 ))}
@@ -118,7 +120,7 @@ const AdminDashboard = () => {
                             <td>{msg.content}</td>
                             {!isMobile && <td>{msg.isFromUser ? 'User' : 'Bot'}</td>}
                             <td>
-                              <button onClick={() => handleMessageDelete(msg.id)}>Delete</button>
+                              {/* <button onClick={() => handleMessageDelete(msg.id)}>Delete</button> */}
                             </td>
                           </tr>
                         ))}

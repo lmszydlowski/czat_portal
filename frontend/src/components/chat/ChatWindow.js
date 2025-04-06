@@ -3,6 +3,7 @@ import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import { useWebSocket } from '../../hooks/useWebSocket';
 import { useChatHomeBase } from '../../hooks/useChatHomeBase';
+import { useState, useEffect } from 'react';
 import '../../styles/components/chat/ChatWindow.css';
 
 export var  ChatWindow = () => {
