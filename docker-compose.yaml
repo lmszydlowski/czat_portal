@@ -1,5 +1,6 @@
 services:
   frontend:
+    restart: always
     build: 
       context: ./frontend
       dockerfile: Dockerfile
@@ -16,6 +17,7 @@ services:
     #networks:
       #- app-network
   backend:
+    restart: always
     build: 
       context: ./backend/czat2/  
       dockerfile: Dockerfile
@@ -37,4 +39,5 @@ services:
     #  - db
     #networks:
     #  - app-network
+
       
