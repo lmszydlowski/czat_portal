@@ -5,10 +5,17 @@ import '../../styles/components/MessageInput.css';
 const MessageInput = ({ onSendMessage }) => {
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (message.trim()) {
-      onSendMessage(message);
+      try {
+        await api.post('/api/messages', {
+          content: message,
+          chatId: currentChatId // Add required chat ID
+        });
+      } catch (error) {
+        console.error('Message send failed:', error);
+      }
       setMessage('');
     }
   };

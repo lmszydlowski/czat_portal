@@ -24,5 +24,16 @@ const MessageList = ({ messages }) => {
     </div>
   );
 };
+useEffect(() => {
+  const fetchMessages = async () => {
+    try {
+      const response = await api.get(`/api/chat/${chatId}/messages`);
+      setMessages(response.data);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+    }
+  };
+  fetchMessages();
+}, [chatId]);
 
 export default MessageList;

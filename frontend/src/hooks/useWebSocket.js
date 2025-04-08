@@ -13,14 +13,13 @@ export var useWebSocket = () => {
 
   useEffect(() => {
     // Use secure WebSocket URL
-    const socket = new SockJS(config.wsUrl);
-    const client = Stomp.over(socket);
-
-    client.connect({}, () => {
-      client.subscribe('/topic/messages', (message) => {
-        setLastMessage(JSON.parse(message.body));
-      });
-    });
+    const socket = new SockJS(`${config.wsUrl}/chat`);
+const client = Stomp.over(socket);
+client.connect({}, () => {
+  client.subscribe('/topic/chat', (message) => {
+    setLastMessage(JSON.parse(message.body));
+  });
+});
 
     setStompClient(client);
 
@@ -48,10 +47,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/auth/register', { email, password });
-      if (response.data.token) {
-        login(response.data.token);
-      }
+      const response = await api.post('/auth/register', { 
+        email, 
+        password,
+        role: 'USER' // Add required field
+      });
+      // ... rest of logic
     } catch (error) {
       console.error('Registration failed:', error);
     }
