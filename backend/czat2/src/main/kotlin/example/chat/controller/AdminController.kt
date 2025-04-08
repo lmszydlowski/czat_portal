@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
+get("/users") { /* User management logic */ }
+get("/chats") { /* Chat monitoring logic */ }
+get("/payments") { /* Payment tracking logic */ }
+
 @RestController
 @RequestMapping("/admin")
 @PreAuthorize("hasRole('ADMIN')")

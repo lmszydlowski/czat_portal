@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 
+// Removed invalid 'post' calls. Logic is already implemented in the AuthController class.
+
 @RestController
 @RequestMapping("/auth")
 class AuthController {

@@ -6,6 +6,9 @@ import { useMediaQuery } from 'react-responsive';
 import '../../styles/components/admin/AdminDashboard.css';
 // import { handleUserBlock, handleMessageDelete } from '../../utils/adminUtils'; // Utility functions for blocking users and deleting messages
 
+api.get('/admin/users')
+api.get('/admin/chats')
+api.get('/admin/payments')
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);

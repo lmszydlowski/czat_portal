@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 
+await login(credentials); // Calls POST /auth/login
+
 export const LoginForm = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const { login } = useAuth();

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 
+await api.post('/auth/register', { email, password, klikId });
+
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

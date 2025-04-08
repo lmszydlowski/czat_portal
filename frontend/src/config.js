@@ -1,6 +1,6 @@
 // src/config.js
-export const API_URL = process.env.REACT_APP_API_URL || 'https://www.seksnow.pl/api';
-export const WS_URL = process.env.REACT_APP_WS_URL || 'wss://www.seksnow.pl/ws';
+export const API_URL = process.env.REACT_APP_API_URL || '/api';
+export const WS_URL = process.env.REACT_APP_WS_URL || '/ws';
 
 export const config = {
   apiUrl: API_URL,
