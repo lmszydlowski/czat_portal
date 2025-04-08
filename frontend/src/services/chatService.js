@@ -1,4 +1,4 @@
-// services/chatService.js
+// src/services/chatService.js
 
 import { api } from './api';
 

@@ -1,3 +1,4 @@
+// src/components/chat/MessageList.js
 import React from 'react';
 import '../../styles/components/MessageList.css';
 

@@ -1,3 +1,4 @@
+// src/hooks/useWebSocket.js
 import React, { useEffect, useRef, useState } from 'react';
 import { WS_URL } from '../config';
 import { useAuth } from '../context/AuthContext';

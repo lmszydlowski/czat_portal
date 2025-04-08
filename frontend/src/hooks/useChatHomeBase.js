@@ -1,3 +1,4 @@
+// hooks/useChatHomeBase.js
 import { useState, useEffect } from 'react';
 import { chatHomeBaseService } from '../services/chatHomeBaseService';
 

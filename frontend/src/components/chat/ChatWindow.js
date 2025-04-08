@@ -1,3 +1,4 @@
+// src/components/chat/ChatWindow.js
 import React from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
