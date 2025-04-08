@@ -1,3 +1,5 @@
+// services/chatService.js
+
 import { api } from './api';
 
 export const chatService = {

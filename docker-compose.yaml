@@ -3,6 +3,9 @@ services:
     restart: always
     build: 
       context: ./frontend
+      args: 
+      - REACT_APP_API_URL=/api
+      - REACT_APP_API_URL=/ws
       dockerfile: Dockerfile
     container_name: frontend
     ports:
