@@ -13,7 +13,8 @@ export var useWebSocket = () => {
 
   useEffect(() => {
     // Use secure WebSocket URL
-    const socket = new SockJS(`${config.wsUrl}/chat`);
+    const socket = new SockJS(`${process.env.REACT_APP_WS_URL}/chat`);
+    //const socket = new SockJS(`${config.wsUrl}/chat`);
 const client = Stomp.over(socket);
 client.connect({}, () => {
   client.subscribe('/topic/chat', (message) => {

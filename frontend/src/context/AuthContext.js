@@ -18,11 +18,14 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserData = async () => {
     try {
-      const userData = await api.get('/auth/profile'); // Changed from '/user/profile'
-      setCurrentUser(userData);
-      setIsAdmin(userData.role === 'ADMIN');
+      const response = await api.get('/api/auth/profile');
+      if(response.status === 401) {
+        localStorage.removeItem('token');
+        window.location.reload();
+      }
+      setCurrentUser(response.data);
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error('Authentication error:', error);
     }
   };
 

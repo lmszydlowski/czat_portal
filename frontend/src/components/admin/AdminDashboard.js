@@ -29,16 +29,13 @@ const AdminDashboard = () => {
   
   const fetchAdminData = async () => {
     try {
-      // These calls will use the updated api service with HTTPS
-      const [usersData, chatsData, paymentsData] = await Promise.all([
-        api.get('/admin/users'),
-        api.get('/admin/chats'),
-        api.get('/admin/payments')
+      const [users, chats, payments] = await Promise.all([
+        api.get('/api/admin/users'),
+        api.get('/api/admin/chats'),
+        api.get('/api/admin/payments')
       ]);
-      setUsers(usersData.data);
-      setChats(chatsData.data);
-      setPayments(paymentsData.data);
     } catch (error) {
+      console.error('Admin API Error:', error);
       console.error('Error fetching admin data:', error);
     }
   };

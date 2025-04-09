@@ -36,7 +36,7 @@
   },
   "scripts": {
     "build": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build cd frontend && npm install && npm run build",
-    "start": "react-scripts --openssl-legacy-provider start && cd backend && ./gradlew bootRun", 
+    "start": "react-scripts --openssl-legacy-provider start && cd backend && ./gradlew bootRun -pProd", 
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "preinstall": "npx npm-force-resolutions"

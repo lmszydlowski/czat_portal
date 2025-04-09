@@ -22,9 +22,12 @@ export const useChatHomeBase = () => {
     chatHomeBaseService.sendMessage(content);
   };
 
+  //const connectToChat = () => {
+    //const socket = new WebSocket('wss://seksnow.pl/ws');
+  //}; 
   const connectToChat = () => {
-    const socket = new WebSocket('wss://seksnow.pl/ws');
-  }; // Added missing closing curly brace here
+    const socket = new WebSocket(process.env.REACT_APP_WS_URL || '/ws');
+  };
 
   return { messages, sendMessage, userStatus };
 };

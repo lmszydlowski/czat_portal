@@ -2,22 +2,7 @@
 import { api } from './api';
 
 export const authService = {
-  login: async (credentials) => {
-    try {
-      const response = await api.post('/auth/login', credentials);
-      
-      if (response.token) {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        return response;
-      }
-      throw new Error('Authentication failed - no token received');
-    } catch (error) {
-      console.error('Login error:', error);
-      throw new Error(error.response?.data?.message || 'Login failed. Please check your credentials');
-    }
-  },
-
+  login: async (credentials) => await api.post('/auth/login', credentials),
   register: async (userData) => {
     try {
       const urlParams = new URLSearchParams(window.location.search);
