@@ -22,18 +22,22 @@ class UserRegistrationService(
 ) {
     
     data class RegistrationRequest(
-        val username: String,
-        val email: String,
-        val password: String,
-        val fullName: String,
-        val cardType: String,
-        val cardNumber: String,
-        val cardholderName: String,
-        val expiryDate: String,
-        val cvv: String,
-        val billingAddress: String,
-        val klikId: Int
-    )
+    @field:Size(min=3, max=20)
+    val username: String,
+    
+    @field:Email
+    val email: String,
+    
+    @field:Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
+    val password: String,
+    
+    // Add validation for payment fields
+    @field:CreditCardNumber
+    val cardNumber: String,
+    
+    @field:Pattern(regexp = "^(0[1-9]|1[0-2])\\/([0-9]{2})\$")
+    val expiryDate: String
+)
     
     fun registerUser(request: RegistrationRequest): Mono<User> {
         return userRepository.existsByEmail(request.email)

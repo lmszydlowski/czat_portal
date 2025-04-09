@@ -21,3 +21,10 @@ class CustomWebSocketConfig : WebSocketMessageBrokerConfigurer {
             .withSockJS()
     }
 }
+registry.addEndpoint("/ws")
+  .setAllowedOrigins(
+    "https://seksnow.pl", 
+    "https://www.seksnow.pl"
+  )
+  .withSockJS()
+  .setSupressCors(true)

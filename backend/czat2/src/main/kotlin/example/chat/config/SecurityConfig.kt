@@ -50,3 +50,8 @@ fun securityWebFilterChain(
         }
         .build()
 }
+.pathMatchers(
+  "/auth/**", 
+  "/ws/**", // Add WebSocket endpoint permission
+  "/api/chat/history" // Explicitly allow history endpoint
+).permitAll()
